@@ -1,5 +1,5 @@
 # Library
-This program will store an array of book objects with methods that will give a brief overview of book. There should also be a method to add books to the array.
+This program will store an array of book objects with methods that will give a brief overview of book. There should also be a method to add books to the array. This program will utilize local storage.
 
 ### todo
 + [_] create book object array

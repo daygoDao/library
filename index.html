@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,8 +9,38 @@
   <link rel="stylesheet" href="./css/normalize.css">
   <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
-  
+  <h1>Book List</h1>
+  <button class="add-book">Add Book</button>
+  <!-- modal -->
+  <section class="modal">
+    <section class="modal-content">
+      <p>testy</p>
+      <form action="#" method="POST">
+        <label for="author">Author: </label>
+        <input type="text" id="author" required>
+
+        <label for="author">Title: </label>
+        <input type="text" id="title" required>
+
+        <label for="author">Number of pages: </label>
+        <input type="text" id="pages" required>
+
+        <label for="author">Finished Reading?: </label>
+        <input type="checkbox" id="author" required>
+
+        <button class="form-submit">Add</button>
+      </form>
+    </section>
+
+  </section>
+
+  <ul class="book-list">
+
+  </ul>
+
   <script src="./js/main.js"></script>
 </body>
+
 </html>
