@@ -1,7 +1,3 @@
-let bookList = [];
-
-// JSON.stringify(localStorage.setItem('bookList', '[]'));
-
 function Book(author, title, numOfPages, readStatus) {
   this.author = author;
   this.title = title;
@@ -14,17 +10,20 @@ function showForm() {
 }
 
 function submit() {
-  // let bookArr = JSON.parse(localStorage.getItem('bookList'));
-  // console.log(bookArr, 'test1')
+  // create if bookList doesnt exist
+  if (!localStorage.getItem('bookList')) {
+    localStorage.setItem('bookList', JSON.stringify([]));
+  }
+
+  let bookArr = JSON.parse(localStorage.getItem('bookList'));
   let author = document.getElementById('author').value;
   let title = document.getElementById('title').value;
   let numOfPages = document.getElementById('pages').value;
   let readStatus = document.getElementById('read-status').value;
-  let newBook = new Book(author,title,numOfPages, readStatus);
-  console.table(newBook);
-  bookList.push(newBook);
-  // console.log(bookArr, 'test2')
-  // JSON.stringify(localStorage.setItem('bookList', bookArr));
+  let newBook = new Book(author, title, numOfPages, readStatus);
+  
+  bookArr.push(newBook);
+  localStorage.setItem('bookList', JSON.stringify(bookArr));
 }
 
 // open form within modal for user to add data
