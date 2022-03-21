@@ -1,3 +1,5 @@
+showList();
+
 function Book(author, title, numOfPages, readStatus) {
   this.author = author;
   this.title = title;
@@ -21,9 +23,13 @@ function submit() {
   let numOfPages = document.getElementById('pages').value;
   let readStatus = document.getElementById('read-status').value;
   let newBook = new Book(author, title, numOfPages, readStatus);
-  
+
+  // add to book list
   bookArr.push(newBook);
+  // store to local
   localStorage.setItem('bookList', JSON.stringify(bookArr));
+
+  // output to ui
 }
 
 // open form within modal for user to add data
@@ -33,8 +39,6 @@ addButton.addEventListener('click', showForm);
 let formSubmit = document.querySelector('.form-submit');
 formSubmit.addEventListener('click', submit);
 
-// used to display book(s)
-let newBook = document.createElement('li');
 
 // open modal on click
 let modal = document.querySelector('.modal');
@@ -44,5 +48,18 @@ let modal = document.querySelector('.modal');
 window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = 'none';
+  }
+}
+
+// output local stored book list to ui
+function showList() {
+  let booklist = JSON.parse(localStorage.getItem('bookList'));
+  for (let book of booklist) {
+    // used to display book(s)
+    let bookUL = document.querySelector('ul')
+    let bookLI = document.createElement('li');
+    console.log(book)
+    bookLI.textContent = book.author;
+    bookUL.appendChild(bookLI);
   }
 }
