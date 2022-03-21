@@ -30,6 +30,7 @@ function submit() {
   localStorage.setItem('bookList', JSON.stringify(bookArr));
 
   // output to ui
+  window.location.reload();
 }
 
 // open form within modal for user to add data
