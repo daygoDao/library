@@ -45,6 +45,9 @@ function submit() {
 
   // reload page to update list
   window.location.reload();
+
+  //reset form
+  clearForm();
 }
 
 // output local stored book list to ui
@@ -81,8 +84,7 @@ function showList() {
     bookRead.textContent = `Finished reading: ${book.readStatus}`;
     changeReadStatus.textContent = 'Finished Reading?'
     deleteBook.textContent = 'DELETE';
-  
-    console.log(book.numOfPages)
+
     bookCard.appendChild(bookAuthor);
     bookCard.appendChild(bookTitle);
     bookCard.appendChild(bookPages);
@@ -92,6 +94,7 @@ function showList() {
 
     bookLI.appendChild(bookCard);
     bookUL.appendChild(bookLI);
+  
   }
 }
 
@@ -106,7 +109,7 @@ function flipRead(e) {
   let booklist = JSON.parse(localStorage.getItem('bookList'));
   let index = +e.currentTarget.parentNode.title;
   booklist[index].readStatus = (!booklist[index].readStatus);
-  
+
   // store to local
   localStorage.setItem('bookList', JSON.stringify(booklist));
 
@@ -124,10 +127,23 @@ function discard(e) {
   //console.log(e.currentTarget.parentNode.title);
   let booklist = JSON.parse(localStorage.getItem('bookList'));
   booklist.splice(+e.currentTarget.parentNode.title, 1);
-  
+
   // store to local
   localStorage.setItem('bookList', JSON.stringify(booklist));
 
   // reload page to update list
   window.location.reload();
+}
+
+//clear form
+function clearForm() {
+  let author = document.querySelector('#author');
+  let title = document.querySelector('#title');
+  let pages = document.querySelector('#pages');
+  let read = document.querySelector('#read-status');
+
+  author.value = '';
+  title.value = '';
+  pages.value = '';
+  read.checked = false;
 }
