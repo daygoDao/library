@@ -66,6 +66,8 @@ function showList() {
     let bookTitle = document.createElement('h4');
     let bookPages = document.createElement('p');
     let bookRead = document.createElement('p');
+    let changeReadStatus = document.createElement('button');
+    changeReadStatus.classList.add('change-read');
     let deleteBook = document.createElement('button');
     deleteBook.classList.add('delete-book');
 
@@ -73,10 +75,11 @@ function showList() {
     bookCard.classList.add('card');
 
     bookCard.title = bookCount++;
-    bookAuthor.textContent = book.author;
-    bookTitle.textContent = book.title;
-    bookPages.textContent = book.numOfPages;
-    bookRead.textContent = book.readStatus;
+    bookAuthor.textContent = `Author: ${book.author}`;
+    bookTitle.textContent = `Title: ${book.title}`;
+    bookPages.textContent = `Number of pages: ${book.numOfPages}`;
+    bookRead.textContent = `Finished reading: ${book.readStatus}`;
+    changeReadStatus.textContent = 'Finished Reading?'
     deleteBook.textContent = 'DELETE';
   
     console.log(book.numOfPages)
@@ -84,11 +87,31 @@ function showList() {
     bookCard.appendChild(bookTitle);
     bookCard.appendChild(bookPages);
     bookCard.appendChild(bookRead);
+    bookCard.appendChild(changeReadStatus);
     bookCard.appendChild(deleteBook);
 
     bookLI.appendChild(bookCard);
     bookUL.appendChild(bookLI);
   }
+}
+
+// change read status
+let changeRead = document.querySelectorAll('.change-read');
+for (let book of changeRead) {
+  book.addEventListener('click', flipRead);
+}
+
+function flipRead(e) {
+  //console.log(e.currentTarget.previousElementSibling)
+  let booklist = JSON.parse(localStorage.getItem('bookList'));
+  let index = +e.currentTarget.parentNode.title;
+  booklist[index].readStatus = (!booklist[index].readStatus);
+  
+  // store to local
+  localStorage.setItem('bookList', JSON.stringify(booklist));
+
+  // reload page to update list
+  window.location.reload();
 }
 
 // delete book
