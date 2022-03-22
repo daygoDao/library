@@ -6,5 +6,5 @@ This program will store an array of book objects with methods that will give a b
 + [x] create function to loop through the book obj array and display on the webpage
 + [x] create function to add new book through a button(DOM)
   + brings up a form allowing users to input details of the new book(author, title, # of pages, and read status)
-+ [_] create button to remove each book display from the library
++ [x] create button to remove each book display from the library
 + [_] add a button to each book display to change the read status on the book's prototype instance

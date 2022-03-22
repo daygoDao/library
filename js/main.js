@@ -55,6 +55,8 @@ function showList() {
   }
 
   let booklist = JSON.parse(localStorage.getItem('bookList'));
+  let bookCount = 0;
+
   for (let book of booklist) {
 
     // used to display book(s)
@@ -70,6 +72,7 @@ function showList() {
     let bookCard = document.createElement('section');
     bookCard.classList.add('card');
 
+    bookCard.title = bookCount++;
     bookAuthor.textContent = book.author;
     bookTitle.textContent = book.title;
     bookPages.textContent = book.numOfPages;
@@ -95,6 +98,13 @@ for (let book of removeBooks) {
 }
 
 function discard(e) {
-  console.log(e);
-  //e.currentTarget.parentNode.parentNode.remove(this);
+  //console.log(e.currentTarget.parentNode.title);
+  let booklist = JSON.parse(localStorage.getItem('bookList'));
+  booklist.splice(+e.currentTarget.parentNode.title, 1);
+  
+  // store to local
+  localStorage.setItem('bookList', JSON.stringify(booklist));
+
+  // reload page to update list
+  window.location.reload();
 }
