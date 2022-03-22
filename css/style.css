@@ -35,7 +35,11 @@
 
 li {
   border: 4px dotted salmon;
-  width: 5rem;
-  height: 5rem;
+  width: 15rem;
+  height: 15rem;
   margin: 1rem;
+}
+
+.card {
+  padding: 10px;
 }
