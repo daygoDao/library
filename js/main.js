@@ -70,12 +70,10 @@ function showList() {
     let bookCard = document.createElement('section');
     bookCard.classList.add('card');
 
-    console.log(read)
-
     bookAuthor.textContent = book.author;
     bookTitle.textContent = book.title;
     bookPages.textContent = book.numOfPages;
-    bookRead.textContent = read.readStatus;
+    bookRead.textContent = book.readStatus;
     deleteBook.textContent = 'DELETE';
   
     console.log(book.numOfPages)
