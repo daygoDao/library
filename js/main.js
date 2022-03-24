@@ -1,5 +1,15 @@
 showList();
 
+class Book {
+  constructor(author, title, numOfPages, readStatus) {
+    this.author = author;
+    this.title = title;
+    this.numOfPages = numOfPages;
+    this.readStatus = readStatus;
+  }
+
+}
+
 /////////////////////////////////////////////////////////////////////
 // open form within modal for user to add data
 let addButton = document.querySelector('.add-book');
@@ -16,14 +26,7 @@ window.onclick = function (event) {
     modal.style.display = 'none';
   }
 }
-///////////////////////////////////////////////////////////////////
-
-function Book(author, title, numOfPages, readStatus) {
-  this.author = author;
-  this.title = title;
-  this.numOfPages = numOfPages;
-  this.readStatus = readStatus;
-}
+//////////////////////////////////////////////////////////////////
 
 function showForm() {
   modal.style.display = 'block';
@@ -94,7 +97,7 @@ function showList() {
 
     bookLI.appendChild(bookCard);
     bookUL.appendChild(bookLI);
-  
+
   }
 }
 
@@ -122,7 +125,6 @@ let removeBooks = document.querySelectorAll('.delete-book');
 for (let book of removeBooks) {
   book.addEventListener('click', discard);
 }
-
 function discard(e) {
   //console.log(e.currentTarget.parentNode.title);
   let booklist = JSON.parse(localStorage.getItem('bookList'));
