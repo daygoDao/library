@@ -1,6 +1,8 @@
 # Library
 This program will store an array of book objects with methods that will give a brief overview of book. There should also be a method to add books to the array. This program will utilize local storage.
 
+## this is a version with class as objects
+
 ### todo
 + [x] create book object array
 + [x] create function to loop through the book obj array and display on the webpage
